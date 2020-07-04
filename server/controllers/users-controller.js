@@ -6,3 +6,7 @@ exports.usersGetAll = async (req, res) => {
   // res.send('There will be dragons, not posts.')
   res.json(users)
 }
+
+exports.login = async (req, res) => {
+  res.send("here be dragons")
+}

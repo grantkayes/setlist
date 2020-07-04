@@ -23,7 +23,9 @@ const App = () => {
   // Prepare state hook for users list
   // Note: <UserUI[]> is for TypeScript
   // It specifies the shape of usersList state
+  const [message, setMessage] = useState<String>("")
   const [usersList, setUsersList] = useState<UserUI[]>([])
+  const [verified, setVerified] = useState<Boolean>(false)
 
   // Create async function for fetching welcome message
   const fetchMessage = async () => {
@@ -32,6 +34,13 @@ const App = () => {
       .then(res => res.text()) // process incoming data
     // Update welcomeMessage state
     setWelcomeMessage(message)
+  }
+
+  const loginUser = async () => {
+    fetch('/users/login')
+      .then( (res) => console.log(res))
+
+    console.log(verified)
   }
 
   // Use useEffect to call fetchMessage() on initial render
@@ -52,7 +61,7 @@ const App = () => {
       <header className="app-header">
         <p>{welcomeMessage}</p>
         {/* "handleSubmit" will validate your inputs before invoking "onSubmit" */}
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(loginUser)}>
         {/* register your input into the hook by invoking the "register" function */}
           <input name="username" defaultValue="test" ref={register} />
           
