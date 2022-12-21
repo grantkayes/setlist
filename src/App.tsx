@@ -27,6 +27,7 @@ const App = () => {
   const [usersList, setUsersList] = useState<UserUI[]>([])
   const [verified, setVerified] = useState<Boolean>(false)
 
+  //comment
   // Create async function for fetching welcome message
   const fetchMessage = async () => {
     // Use Fetch API to fetch '/api' endpoint
